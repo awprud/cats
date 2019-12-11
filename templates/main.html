@@ -5,19 +5,20 @@
     <title>Main page</title>
 </head>
 <body>
-<h2>Messages</h2>
-<form method="post" action="/add_message">
-    <input type="text" name="text">
-    <input type="text" name="tag">
-    <button type="submit">Add message</button>
+<h2>Cats</h2>
+<form method="post" action="/add_cat">
+    <input type="text" name="name" placeholder="Name">
+    <input type="text" name="breed" placeholder="Breed">
+    <input type="text" name="loc_x" placeholder="Location X">
+    <input type="text" name="loc_y" placeholder="Location Y">
+    <button type="submit">Add cat</button>
 </form>
-
-<h3>Messages list</h3>
-{% for message in messages %}
-<div>{{ message.text }}
-    {%for tag in message.tags%}
-    <b>#{{ tag.text }}</b>
-    {% endfor %}
+<h3>Cats list</h3>
+{% for cat in cats %}
+    <div><b>{{ cat.name }}</b>
+    {{ cat.breed }}
+    x: {{ cat.location_x }}
+    y:  {{ cat.location_y }}
 </div>
 {% endfor %}
 
