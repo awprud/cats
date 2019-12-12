@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cat deletion</title>
+</head>
+<body>
+{% for cat in cats %}
+    <div><b>{{ cat.name }}</b>
+    {{ cat.breed }}
+    x: {{ cat.location_x }}
+    y:  {{ cat.location_y }}
+</div>
+{% endfor %}
+<p></p>
+<form method="post" action="/cat_delete">
+    <input type="text" name="name" placeholder="Name of cat, which you want to delete">
+    <button type="submit">Delete cat</button>
+</form>
+<p></p>
+<a href="{{ url_for('index') }}">To main page</a>
+</body>
+</html>

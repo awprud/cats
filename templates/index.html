@@ -6,6 +6,17 @@
 </head>
 <body>
 <h2>Hello, user! Let's get some cats $)</h2>
-<a href="{{ url_for('main') }}">Here you can see existed cats and add new ones</a>
+<a href="{{ url_for('main') }}">Here you can add new cats</a>
+<p></p>
+<a href="{{ url_for('deletion') }}">Here you can delete existed cats</a>
+<p></p>
+<h3>Cats list</h3>
+{% for cat in cats %}
+    <div><b>{{ cat.name }}</b>
+    {{ cat.breed }}
+    x: {{ cat.location_x }}
+    y:  {{ cat.location_y }}
+</div>
+{% endfor %}
 </body>
 </html>

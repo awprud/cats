@@ -30,8 +30,23 @@ def main():
 
 @app.route('/', methods=['GET'])
 def index():
-    return render_template('index.html')
+    return render_template('index.html', cats=Cat.query.all())
 
+
+@app.route('/deletion', methods=['GET'])
+def deletion():
+    return render_template('deletion.html', cats=Cat.query.all())
+
+
+@app.route('/cat_delete', methods=['POST'])
+def cat_delete():
+    name = request.form['name']
+    cat = Cat.query.filter_by(name=name).first()
+
+    db.session.delete(cat);
+    db.session.commit()
+
+    return redirect(url_for('deletion'))
 
 
 @app.route('/add_cat', methods=['POST'])
